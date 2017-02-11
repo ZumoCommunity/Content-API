@@ -337,10 +337,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\api\ContentController.cs" />
+    <Compile Include="Controllers\api\v1\ContentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DownloadFileRequestModel.cs" />
+    <Compile Include="Models\UploadFileRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -354,11 +356,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZumoCommunity.ContentApi.Infrastructure\ZumoCommunity.ContentApi.Infrastructure.csproj">
+      <Project>{BE991DB6-C965-455F-9795-EFA4658D2EB3}</Project>
+      <Name>ZumoCommunity.ContentApi.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZumoCommunity.ContentApi.Storage\ZumoCommunity.ContentApi.Storage.csproj">
-      <Project>{62c39ccf-32d6-4987-819d-b55b95063921}</Project>
+      <Project>{92e36f64-7cc9-4461-82d9-801a54096628}</Project>
       <Name>ZumoCommunity.ContentApi.Storage</Name>
     </ProjectReference>
   </ItemGroup>

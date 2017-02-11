@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ZumoCommunity.ContentApi.Storage")]
+[assembly: AssemblyTitle("ZumoCommunity.ContentApi.Infrastructure")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ZumoCommunity.ContentApi.Storage")]
+[assembly: AssemblyProduct("ZumoCommunity.ContentApi.Infrastructure")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("92e36f64-7cc9-4461-82d9-801a54096628")]
+[assembly: Guid("be991db6-c965-455f-9795-efa4658d2eb3")]
 
 // Version information for an assembly consists of the following four values:
 //
