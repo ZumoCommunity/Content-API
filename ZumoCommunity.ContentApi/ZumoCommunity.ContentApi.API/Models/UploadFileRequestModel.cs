@@ -11,6 +11,6 @@ namespace ZumoCommunity.ContentApi.API.Models
 
         public string Container { get; set; }
 
-        public byte[] FileContent { get; set; }
+        public HttpPostedFileBase FileContent { get; set; }
     }
 }
