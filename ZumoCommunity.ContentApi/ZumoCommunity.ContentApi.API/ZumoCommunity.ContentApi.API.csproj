@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZumoCommunity.ContentApi.API</RootNamespace>
-    <AssemblyName>ZumoCommunity.ContentApi.API</AssemblyName>
+    <RootNamespace>ZumoCommunity.ContentAPI.API</RootNamespace>
+    <AssemblyName>ZumoCommunity.ContentAPI.API</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -437,13 +437,13 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZumoCommunity.ContentApi.Infrastructure\ZumoCommunity.ContentApi.Infrastructure.csproj">
+    <ProjectReference Include="..\ZumoCommunity.ContentAPI.Infrastructure\ZumoCommunity.ContentAPI.Infrastructure.csproj">
       <Project>{BE991DB6-C965-455F-9795-EFA4658D2EB3}</Project>
-      <Name>ZumoCommunity.ContentApi.Infrastructure</Name>
+      <Name>ZumoCommunity.ContentAPI.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ZumoCommunity.ContentApi.Storage\ZumoCommunity.ContentApi.Storage.csproj">
+    <ProjectReference Include="..\ZumoCommunity.ContentAPI.Storage\ZumoCommunity.ContentAPI.Storage.csproj">
       <Project>{92e36f64-7cc9-4461-82d9-801a54096628}</Project>
-      <Name>ZumoCommunity.ContentApi.Storage</Name>
+      <Name>ZumoCommunity.ContentAPI.Storage</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

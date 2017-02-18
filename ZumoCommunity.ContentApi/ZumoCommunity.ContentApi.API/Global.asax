@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ZumoCommunity.ContentApi.API.WebApiApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ZumoCommunity.ContentAPI.API.WebApiApplication" Language="C#" %>

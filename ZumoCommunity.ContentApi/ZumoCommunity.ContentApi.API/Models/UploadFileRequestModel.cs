@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNetCore.Http;
 
-namespace ZumoCommunity.ContentApi.API.Models
+namespace ZumoCommunity.ContentAPI.API.Models
 {
     public class UploadFileRequestModel
     {
@@ -11,6 +12,6 @@ namespace ZumoCommunity.ContentApi.API.Models
 
         public string Container { get; set; }
 
-        public HttpPostedFileBase FileContent { get; set; }
+        public HttpPostedFileBase File { get; set; }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
-namespace ZumoCommunity.ContentApi.API
+namespace ZumoCommunity.ContentAPI.API
 {
     public static class WebApiConfig
     {
@@ -14,6 +15,9 @@ namespace ZumoCommunity.ContentApi.API
 
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
+
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/octet-stream"));
+
 
             // Web API routes
             config.MapHttpAttributeRoutes();

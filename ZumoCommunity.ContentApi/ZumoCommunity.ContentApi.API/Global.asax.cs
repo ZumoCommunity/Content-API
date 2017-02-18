@@ -5,7 +5,7 @@ using System.Web.Routing;
 using ZumoCommunity.ConfigurationAPI.Provider;
 using ZumoCommunity.ConfigurationAPI.Readers.Common;
 
-namespace ZumoCommunity.ContentApi.API
+namespace ZumoCommunity.ContentAPI.API
 {
     public class WebApiApplication : HttpApplication
     {

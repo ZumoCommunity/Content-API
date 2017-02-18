@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ZumoCommunity.ContentApi.API.Models
+namespace ZumoCommunity.ContentAPI.API.Models
 {
     public class DownloadFileRequestModel
     {

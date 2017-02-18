@@ -3,9 +3,9 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using ZumoCommunity.ContentApi.Infrastructure.BlobStorage;
+using ZumoCommunity.ContentAPI.Infrastructure.BlobStorage;
 
-namespace ZumoCommunity.ContentApi.Storage.BlobStorage
+namespace ZumoCommunity.ContentAPI.Storage.BlobStorage
 {
     public class FileService : IFileService
     {
@@ -25,7 +25,7 @@ namespace ZumoCommunity.ContentApi.Storage.BlobStorage
 
             container.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
-            var blockBlob = await container.GetBlobReferenceFromServerAsync(blobName);
+            var blockBlob = container.GetBlockBlobReference(blobName);
 
             await blockBlob.UploadFromStreamAsync(fileContent);
         }

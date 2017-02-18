@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ZumoCommunity.ContentApi.API.Helpers
+namespace ZumoCommunity.ContentAPI.API.Helpers
 {
 	public static class Factory
 	{

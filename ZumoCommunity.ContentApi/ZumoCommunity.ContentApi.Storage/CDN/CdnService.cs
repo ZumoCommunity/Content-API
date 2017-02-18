@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZumoCommunity.ContentApi.Infrastructure.CDN;
+using ZumoCommunity.ContentAPI.Infrastructure.CDN;
 
-namespace ZumoCommunity.ContentApi.Storage.CDN
+namespace ZumoCommunity.ContentAPI.Storage.CDN
 {
     public class CdnService : ICdnService
     {

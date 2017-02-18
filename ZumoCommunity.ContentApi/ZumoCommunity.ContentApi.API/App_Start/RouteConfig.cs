@@ -6,7 +6,7 @@ using System.Web.Http;
 using System.Web.Routing;
 using Swashbuckle.Application;
 
-namespace ZumoCommunity.ContentApi.API
+namespace ZumoCommunity.ContentAPI.API
 {
     public static class RouteConfig
     {

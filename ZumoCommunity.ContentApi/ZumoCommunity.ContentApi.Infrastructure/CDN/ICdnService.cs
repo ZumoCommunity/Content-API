@@ -1,4 +1,4 @@
-﻿namespace ZumoCommunity.ContentApi.Infrastructure.CDN
+﻿namespace ZumoCommunity.ContentAPI.Infrastructure.CDN
 {
     public interface ICdnService
     {

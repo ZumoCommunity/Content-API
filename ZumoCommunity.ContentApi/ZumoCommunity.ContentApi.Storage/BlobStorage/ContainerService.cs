@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZumoCommunity.ContentApi.Infrastructure.BlobStorage;
+using ZumoCommunity.ContentAPI.Infrastructure.BlobStorage;
 
-namespace ZumoCommunity.ContentApi.Storage.BlobStorage
+namespace ZumoCommunity.ContentAPI.Storage.BlobStorage
 {
 
     public class ContainerService : IContainerService

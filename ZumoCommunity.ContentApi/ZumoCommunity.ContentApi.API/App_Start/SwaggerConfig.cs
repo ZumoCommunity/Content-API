@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using Swashbuckle.Application;
-using ZumoCommunity.ContentApi.API;
+using ZumoCommunity.ContentAPI.API;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace ZumoCommunity.ContentApi.API
+namespace ZumoCommunity.ContentAPI.API
 {
     public class SwaggerConfig
     {

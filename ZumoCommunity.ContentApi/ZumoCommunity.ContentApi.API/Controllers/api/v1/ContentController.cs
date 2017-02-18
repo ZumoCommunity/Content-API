@@ -1,16 +1,17 @@
-﻿using System.Net;
+﻿using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using ZumoCommunity.ContentApi.API.Helpers;
-using ZumoCommunity.ContentApi.API.Models;
-using ZumoCommunity.ContentApi.Infrastructure.BlobStorage;
-using ZumoCommunity.ContentApi.Infrastructure.CDN;
-using ZumoCommunity.ContentApi.Storage.BlobStorage;
-using ZumoCommunity.ContentApi.Storage.CDN;
+using ZumoCommunity.ContentAPI.API.Helpers;
+using ZumoCommunity.ContentAPI.API.Models;
+using ZumoCommunity.ContentAPI.Infrastructure.BlobStorage;
+using ZumoCommunity.ContentAPI.Infrastructure.CDN;
+using ZumoCommunity.ContentAPI.Storage.BlobStorage;
+using ZumoCommunity.ContentAPI.Storage.CDN;
 
-namespace ZumoCommunity.ContentApi.API.Controllers.api.v1
+namespace ZumoCommunity.ContentAPI.API.Controllers.api.v1
 {
     [RoutePrefix("api/content")]
     public class ContentController : ApiController
@@ -31,7 +32,7 @@ namespace ZumoCommunity.ContentApi.API.Controllers.api.v1
 
         [HttpPost]
         [Route("upload")]
-        public async Task<HttpResponseMessage> Upload()
+        public async Task<HttpResponseMessage> Upload([FromUri]DownloadFileRequestModel model)
         {
             HttpRequestMessage request = this.Request;
 
@@ -39,14 +40,16 @@ namespace ZumoCommunity.ContentApi.API.Controllers.api.v1
             {
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
-            
-            //await _fileService.UploadFile(model.Container, model.BlobName, model.FileContent.InputStream);
 
+            var reqStream = Request.Content.ReadAsStreamAsync().Result;
+
+            await _fileService.UploadFile(model.ContainerName.ToLower(), model.BlobName, reqStream);
+            
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        [HttpGet]
-        [Route("download")]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("download")]
         public async Task<HttpResponseMessage> Download(DownloadFileRequestModel model)
         {
             var downloadUrl = await _fileService.DownloadFileCdnUrl(model.ContainerName, model.BlobName);

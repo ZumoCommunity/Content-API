@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ZumoCommunity.ContentApi.Infrastructure.BlobStorage
+namespace ZumoCommunity.ContentAPI.Infrastructure.BlobStorage
 {
     public interface IContainerService
     {

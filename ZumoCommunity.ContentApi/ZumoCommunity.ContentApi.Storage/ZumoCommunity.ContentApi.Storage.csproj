@@ -104,9 +104,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZumoCommunity.ContentApi.Infrastructure\ZumoCommunity.ContentApi.Infrastructure.csproj">
+    <ProjectReference Include="..\ZumoCommunity.ContentAPI.Infrastructure\ZumoCommunity.ContentAPI.Infrastructure.csproj">
       <Project>{BE991DB6-C965-455F-9795-EFA4658D2EB3}</Project>
-      <Name>ZumoCommunity.ContentApi.Infrastructure</Name>
+      <Name>ZumoCommunity.ContentAPI.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
