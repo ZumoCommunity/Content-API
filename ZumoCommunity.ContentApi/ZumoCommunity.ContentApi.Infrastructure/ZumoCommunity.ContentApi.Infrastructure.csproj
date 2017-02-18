@@ -7,8 +7,8 @@
     <ProjectGuid>{BE991DB6-C965-455F-9795-EFA4658D2EB3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZumoCommunity.ContentApi.Infrastructure</RootNamespace>
-    <AssemblyName>ZumoCommunity.ContentApi.Infrastructure</AssemblyName>
+    <RootNamespace>ZumoCommunity.ContentAPI.Infrastructure</RootNamespace>
+    <AssemblyName>ZumoCommunity.ContentAPI.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

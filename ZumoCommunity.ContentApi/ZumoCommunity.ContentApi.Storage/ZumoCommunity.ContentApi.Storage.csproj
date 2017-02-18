@@ -7,8 +7,8 @@
     <ProjectGuid>{92E36F64-7CC9-4461-82D9-801A54096628}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZumoCommunity.ContentApi.Storage</RootNamespace>
-    <AssemblyName>ZumoCommunity.ContentApi.Storage</AssemblyName>
+    <RootNamespace>ZumoCommunity.ContentAPI.Storage</RootNamespace>
+    <AssemblyName>ZumoCommunity.ContentAPI.Storage</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
