@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 using ZumoCommunity.ConfigurationAPI.Provider;
@@ -6,7 +7,7 @@ using ZumoCommunity.ConfigurationAPI.Readers.Common;
 
 namespace ZumoCommunity.ContentApi.API
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         public static ConfigurationProvider ConfigurationProvider;
 

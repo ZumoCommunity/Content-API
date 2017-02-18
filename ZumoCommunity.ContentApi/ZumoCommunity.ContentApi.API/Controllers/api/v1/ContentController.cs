@@ -1,7 +1,9 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
+using ZumoCommunity.ContentApi.API.Helpers;
 using ZumoCommunity.ContentApi.API.Models;
 using ZumoCommunity.ContentApi.Infrastructure.BlobStorage;
 using ZumoCommunity.ContentApi.Infrastructure.CDN;
@@ -19,14 +21,17 @@ namespace ZumoCommunity.ContentApi.API.Controllers.api.v1
 
         public ContentController()
         {
-            _fileService = new FileService();
+            var task = Task.Run(Factory.GetStorageConnectionStringAsync);
+            task.Wait();
+
+            _fileService = new FileService(task.Result);
             _cdnService = new CdnService();
             _containerService = new ContainerService();
         }
 
         [HttpPost]
         [Route("upload")]
-        public async Task<HttpResponseMessage> Upload(UploadFileRequestModel model)
+        public async Task<HttpResponseMessage> Upload()
         {
             HttpRequestMessage request = this.Request;
 
@@ -34,6 +39,8 @@ namespace ZumoCommunity.ContentApi.API.Controllers.api.v1
             {
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
+            
+            //await _fileService.UploadFile(model.Container, model.BlobName, model.FileContent.InputStream);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
@@ -42,7 +49,9 @@ namespace ZumoCommunity.ContentApi.API.Controllers.api.v1
         [Route("download")]
         public async Task<HttpResponseMessage> Download(DownloadFileRequestModel model)
         {
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var downloadUrl = await _fileService.DownloadFileCdnUrl(model.ContainerName, model.BlobName);
+
+            return Request.CreateResponse(HttpStatusCode.OK, downloadUrl);
         }
     }
 }

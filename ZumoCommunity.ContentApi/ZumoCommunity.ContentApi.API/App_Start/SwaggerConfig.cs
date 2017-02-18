@@ -149,6 +149,7 @@ namespace ZumoCommunity.ContentApi.API
                     // Operation filters.
                     //
                     //c.OperationFilter<AddDefaultResponse>();
+                    c.OperationFilter<AddFileParamTypes>();
                     //
                     // If you've defined an OAuth2 flow as described above, you could use a custom filter
                     // to inspect some attribute on each action and infer which (if any) OAuth2 scopes are required

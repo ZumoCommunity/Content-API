@@ -1,26 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using ZumoCommunity.ContentApi.Infrastructure.BlobStorage;
 
 namespace ZumoCommunity.ContentApi.Storage.BlobStorage
 {
     public class FileService : IFileService
     {
-        public Task UploadFile(string containerName, string blobName, Stream fileContent)
+        protected readonly CloudStorageAccount Account;
+        protected readonly CloudBlobClient BlobClient;
+
+        public FileService(string connectionString)
+        {
+            Account = CloudStorageAccount.Parse(connectionString);
+            BlobClient = Account.CreateCloudBlobClient();
+        }
+
+        public async Task UploadFile(string containerName, string blobName, Stream fileContent)
+        {
+            var container = BlobClient.GetContainerReference(containerName);
+            container.CreateIfNotExists();
+
+            container.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+
+            var blockBlob = await container.GetBlobReferenceFromServerAsync(blobName);
+
+            await blockBlob.UploadFromStreamAsync(fileContent);
+        }
+
+        public async Task<string> GetFileUploadUrl(string containerName, string blobName)
         {
             throw new NotImplementedException();
         }
 
-        public Task<string> GetFileUploadUrl(string containerName, string blobName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> DownloadFileCdnUrl(string containerName, string blobName)
+        public async Task<string> DownloadFileCdnUrl(string containerName, string blobName)
         {
             throw new NotImplementedException();
         }
