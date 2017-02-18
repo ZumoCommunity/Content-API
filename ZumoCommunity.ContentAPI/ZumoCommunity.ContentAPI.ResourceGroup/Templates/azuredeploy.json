@@ -1,0 +1,106 @@
+﻿{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+	},
+	"variables": {
+		"UniqueId": "uniqueString(resourceGroup().id)",
+
+		"WebFarm-Name": "[concat('meetup-webfarm-', variables('UniqueId'))]",
+		"WebFarm-SKU": "Standard",
+		"WebFarm-WorkerSize": "1",
+		"WebFarm-WorkersCount": 1,
+
+		"WebApp-API-Content-Name": "[concat('content-api-', variables('UniqueId'))]",
+
+		"Content-StorageName": "[toLower(concat('Content', variables('UniqueId')))]",
+		"Content-PricingPlan": "Standard_LRS",
+		"Content-OriginUrl": "[concat('https://', variables('Content-StorageName'), '.blob.core.windows.net')]",
+
+		"CDN-ProfileName": "[concat('cdn-', variables('UniqueId'))]",
+		"CDN-EndpointName": "[concat('cdn-content-', variables('UniqueId'))]"
+	},
+	"resources": [
+		{
+			"name": "[variables('WebFarm-Name')]",
+			"type": "Microsoft.Web/serverfarms",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2014-06-01",
+			"tags": {
+				"displayName": "WebFarm"
+			},
+			"properties": {
+				"name": "[variables('WebFarm-Name')]",
+				"sku": "[variables('WebFarm-SKU')]",
+				"workerSize": "[variables('WebFarm-WorkerSize')]",
+				"numberOfWorkers": "[variables('WebFarm-WorkersCount')]"
+			}
+		},
+		{
+			"name": "[variables('Content-StorageName')]",
+			"type": "Microsoft.Storage/storageAccounts",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2015-06-15",
+			"dependsOn": [ ],
+			"tags": {
+				"displayName": "ContentStorage"
+			},
+			"properties": {
+				"accountType": "[variables('Content-PricingPlan')]"
+			}
+		},
+		{
+			"name": "[variables('CDN-ProfileName')]",
+			"type": "Microsoft.Cdn/profiles",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2015-06-01",
+			"dependsOn": [ ],
+			"tags": {
+				"displayName": "CDN"
+			},
+			"properties": {
+				"sku": {
+					"name": "Standard"
+				}
+			},
+			"resources": [
+				{
+					"name": "[variables('CDN-EndpointName')]",
+					"type": "endpoints",
+					"location": "[resourceGroup().location]",
+					"apiVersion": "2015-06-01",
+					"dependsOn": [
+						"[resourceId('Microsoft.Cdn/profiles', variables('CDN-ProfileName'))]"
+					],
+					"tags": {
+						"displayName": "ContentEndpoint"
+					},
+					"properties": {
+						"originHostHeader": "[variables('Content-OriginUrl')]",
+						"isHttpAllowed": true,
+						"isHttpsAllowed": true,
+						"queryStringCachingBehavior": "IgnoreQueryString",
+						"contentTypesToCompress": [
+							"text/plain",
+							"text/html",
+							"text/css",
+							"application/x-javascript",
+							"text/javascript"
+						],
+						"isCompressionEnabled": "True",
+						"origins": [
+							{
+								"name": "origin",
+								"properties": {
+									"hostName": "[variables('Content-OriginUrl')]"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"outputs": {
+	}
+}
