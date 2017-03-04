@@ -35,12 +35,27 @@
         <h3 class="text-muted">Demo</h3>
       </div>
 
-      <div>  
+      <div class="row">
+        API URL: <input type="text" id="apiUrl" />
+      </div>
+
+      <div class="row">  
         Choose file:
         <input type="file" name="UploadFile" id="txtUploadFile" />
         <br />
         <button id="btnUpload">Upload</button>
       </div>  
+
+      <hr />
+     
+      <div class="row">
+        <strong>Get files url from container: </strong><br />
+        Container name: <input type="text" id="txtContainerName" /> <br />
+        <button id="btnLinks">Get</button>
+      </div>
+      <div class="row">
+        <div id="links"></div>
+      </div>
     </div>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

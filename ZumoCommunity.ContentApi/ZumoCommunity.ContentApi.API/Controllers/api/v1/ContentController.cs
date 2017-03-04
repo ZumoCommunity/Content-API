@@ -47,9 +47,18 @@ namespace ZumoCommunity.ContentAPI.API.Controllers.api.v1
         [Route("download")]
         public async Task<HttpResponseMessage> Download(DownloadFileRequestModel model)
         {
-            var downloadUrl = await _fileService.DownloadFileCdnUrl(model.ContainerName, model.BlobName);
+            var downloadUrl = await _fileService.DownloadFileUrl(model.ContainerName, model.BlobName);
 
             return Request.CreateResponse(HttpStatusCode.OK, downloadUrl);
+        }
+
+        [HttpGet]
+        [Route("links")]
+        public HttpResponseMessage GetLinks(string containerName)
+        {
+            var links = _fileService.DownloadFilesUrls(containerName);
+
+            return Request.CreateResponse(HttpStatusCode.OK, links);
         }
     }
 }
