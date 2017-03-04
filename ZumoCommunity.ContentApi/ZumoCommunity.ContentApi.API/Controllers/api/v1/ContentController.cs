@@ -1,8 +1,6 @@
-﻿using System.IO;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using ZumoCommunity.ContentAPI.API.Helpers;
 using ZumoCommunity.ContentAPI.API.Models;
@@ -34,22 +32,19 @@ namespace ZumoCommunity.ContentAPI.API.Controllers.api.v1
         [Route("upload")]
         public async Task<HttpResponseMessage> Upload([FromUri]DownloadFileRequestModel model)
         {
-            HttpRequestMessage request = this.Request;
-
-            if (!request.Content.IsMimeMultipartContent())
+            if (!Request.Content.IsMimeMultipartContent())
             {
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
 
             var reqStream = Request.Content.ReadAsStreamAsync().Result;
-
             await _fileService.UploadFile(model.ContainerName.ToLower(), model.BlobName, reqStream);
             
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("download")]
+        [HttpGet]
+        [Route("download")]
         public async Task<HttpResponseMessage> Download(DownloadFileRequestModel model)
         {
             var downloadUrl = await _fileService.DownloadFileCdnUrl(model.ContainerName, model.BlobName);
